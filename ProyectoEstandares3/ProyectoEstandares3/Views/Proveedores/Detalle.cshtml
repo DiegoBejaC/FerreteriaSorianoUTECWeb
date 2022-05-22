@@ -1,0 +1,41 @@
+﻿@model ProyectoEstandares3.Models.Proveedores
+
+@{
+    ViewBag.Title = "Detalle de proveedores";
+}
+
+<h2>Detalle de proveedores</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefono)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefono)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Direccion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Direccion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Modificar", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

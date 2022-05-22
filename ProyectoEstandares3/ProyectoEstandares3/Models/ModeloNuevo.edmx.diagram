@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5a9f49a634f842cfb5c45ba687d38997" Name="Diagram1">
+        <EntityTypeShape EntityType="FerreSoriano17Model.Almacen_Inventario" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FerreSoriano17Model.Almacenes" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FerreSoriano17Model.Categorias" Width="1.5" PointX="3.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FerreSoriano17Model.Compras" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FerreSoriano17Model.ComprasDetalle" Width="1.5" PointX="5.25" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FerreSoriano17Model.DetalleEgreso" Width="1.5" PointX="8.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FerreSoriano17Model.HojaEgreso" Width="1.5" PointX="6" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FerreSoriano17Model.Inventario" Width="1.5" PointX="6" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FerreSoriano17Model.Kardex" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FerreSoriano17Model.Proveedores" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FerreSoriano17Model.Usuarios" Width="1.5" PointX="8.75" PointY="8.625" IsExpanded="true" />
+        <AssociationConnector Association="FerreSoriano17Model.FK__Almacen_I__Id_in__32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="FerreSoriano17Model.FK__ComprasDetalle__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="FerreSoriano17Model.FK__DetalleEgreso__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="FerreSoriano17Model.FK__Compras__Id_prov__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="FerreSoriano17Model.FK__ComprasDe__Id_do__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="FerreSoriano17Model.FK__DetalleEg__Id_ho__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="FerreSoriano17Model.FK__DetalleEg__Id_in__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="FerreSoriano17Model.Categorias_Inventario" ManuallyRouted="false" >
+        </AssociationConnector>
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

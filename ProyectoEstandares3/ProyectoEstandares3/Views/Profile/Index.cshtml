@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Iniciar sesión";
+}
+
+<div class="container">
+
+    @{
+        if (!string.IsNullOrEmpty(ViewBag.Message))
+        {
+            // Message tiene un valor
+            <div class="alert alert-danger">@ViewBag.Message</div>
+        }
+    }
+    <br>
+    <form action="/Profile/Login" method="post">
+        <div class="form-group">
+            <label>Ingresa tu usuario:</label>
+            <input type="text" name="usuario" value="" />
+        </div>
+        <div class="form-group">
+            <label>Ingresa tu clave:</label>
+            <input type="password" name="clave" value="" />
+        </div>
+        <div class="form-group">
+            <button>Ingresar</button>
+        </div>
+    </form>
+</div>
+

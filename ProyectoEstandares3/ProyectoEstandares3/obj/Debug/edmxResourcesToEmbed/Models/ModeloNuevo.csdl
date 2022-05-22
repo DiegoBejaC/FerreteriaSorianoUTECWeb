@@ -1,0 +1,274 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FerreSoriano17Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Almacen_Inventario">
+    <Key>
+      <PropertyRef Name="Id_almacen" />
+      <PropertyRef Name="Id_inventario" />
+    </Key>
+    <Property Name="Id_almacen" Type="Int32" Nullable="false" />
+    <Property Name="Id_inventario" Type="Int32" Nullable="false" />
+    <Property Name="Existencia" Type="Int32" />
+    <NavigationProperty Name="Almacenes" Relationship="Self.FK__Almacen_I__Id_in__32E0915F" FromRole="Almacen_Inventario" ToRole="Almacenes" />
+    <NavigationProperty Name="ComprasDetalle" Relationship="Self.FK__ComprasDetalle__3A81B327" FromRole="Almacen_Inventario" ToRole="ComprasDetalle" />
+    <NavigationProperty Name="DetalleEgreso" Relationship="Self.FK__DetalleEgreso__4222D4EF" FromRole="Almacen_Inventario" ToRole="DetalleEgreso" />
+  </EntityType>
+  <EntityType Name="Almacenes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Almacen_Inventario" Relationship="Self.FK__Almacen_I__Id_in__32E0915F" FromRole="Almacenes" ToRole="Almacen_Inventario" />
+  </EntityType>
+  <EntityType Name="Categorias">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Inventario" Relationship="Self.Categorias_Inventario" FromRole="Categorias" ToRole="Inventario" />
+  </EntityType>
+  <EntityType Name="Compras">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Documento" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Id_proveedor" Type="Int32" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Sumas" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Iva" Type="Decimal" Precision="18" Scale="2" />
+    <NavigationProperty Name="Proveedores" Relationship="Self.FK__Compras__Id_prov__35BCFE0A" FromRole="Compras" ToRole="Proveedores" />
+    <NavigationProperty Name="ComprasDetalle" Relationship="Self.FK__ComprasDe__Id_do__398D8EEE" FromRole="Compras" ToRole="ComprasDetalle" />
+  </EntityType>
+  <EntityType Name="ComprasDetalle">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Id_almacen" />
+      <PropertyRef Name="Id_inventario" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_documento" Type="Int32" Nullable="false" />
+    <Property Name="Id_almacen" Type="Int32" Nullable="false" />
+    <Property Name="Id_inventario" Type="Int32" Nullable="false" />
+    <Property Name="Cantidad" Type="Int32" />
+    <Property Name="Precio" Type="Decimal" Precision="18" Scale="2" />
+    <NavigationProperty Name="Almacen_Inventario" Relationship="Self.FK__ComprasDetalle__3A81B327" FromRole="ComprasDetalle" ToRole="Almacen_Inventario" />
+    <NavigationProperty Name="Compras" Relationship="Self.FK__ComprasDe__Id_do__398D8EEE" FromRole="ComprasDetalle" ToRole="Compras" />
+    <Property Name="PrecioTotal" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="DetalleEgreso">
+    <Key>
+      <PropertyRef Name="Id_detalle" />
+      <PropertyRef Name="Id_inventario" />
+      <PropertyRef Name="Id_almacen" />
+    </Key>
+    <Property Name="Id_detalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_hojaEgreso" Type="Int32" Nullable="false" />
+    <Property Name="Id_inventario" Type="Int32" Nullable="false" />
+    <Property Name="Id_almacen" Type="Int32" Nullable="false" />
+    <Property Name="Cantidad" Type="Int32" Nullable="false" />
+    <Property Name="Precio" Type="Decimal" Precision="18" Scale="2" />
+    <NavigationProperty Name="Almacen_Inventario" Relationship="Self.FK__DetalleEgreso__4222D4EF" FromRole="DetalleEgreso" ToRole="Almacen_Inventario" />
+    <NavigationProperty Name="HojaEgreso" Relationship="Self.FK__DetalleEg__Id_ho__403A8C7D" FromRole="DetalleEgreso" ToRole="HojaEgreso" />
+    <NavigationProperty Name="Inventario" Relationship="Self.FK__DetalleEg__Id_in__412EB0B6" FromRole="DetalleEgreso" ToRole="Inventario" />
+    <Property Name="PrecioTotal" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="HojaEgreso">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fecha" Type="DateTime" Precision="0" />
+    <Property Name="Suma" Type="Decimal" Precision="18" Scale="2" />
+    <NavigationProperty Name="DetalleEgreso" Relationship="Self.FK__DetalleEg__Id_ho__403A8C7D" FromRole="HojaEgreso" ToRole="DetalleEgreso" />
+  </EntityType>
+  <EntityType Name="Inventario">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="StockMinimo" Type="Int32" Nullable="false" />
+    <Property Name="StockMaximo" Type="Int32" Nullable="false" />
+    <Property Name="Existencia" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="DetalleEgreso" Relationship="Self.FK__DetalleEg__Id_in__412EB0B6" FromRole="Inventario" ToRole="DetalleEgreso" />
+    <NavigationProperty Name="Categorias" Relationship="Self.Categorias_Inventario" FromRole="Inventario" ToRole="Categorias" />
+  </EntityType>
+  <EntityType Name="Kardex">
+    <Key>
+      <PropertyRef Name="Id_kardex" />
+      <PropertyRef Name="Id_hojaEgreso" />
+      <PropertyRef Name="Id_inventario" />
+      <PropertyRef Name="Id_compra" />
+      <PropertyRef Name="Id_almacen" />
+    </Key>
+    <Property Name="Id_kardex" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_hojaEgreso" Type="Int32" Nullable="false" />
+    <Property Name="Id_inventario" Type="Int32" Nullable="false" />
+    <Property Name="Id_compra" Type="Int32" Nullable="false" />
+    <Property Name="Id_almacen" Type="Int32" Nullable="false" />
+    <Property Name="Cantidad" Type="Int32" />
+    <Property Name="Precio" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="PrecioTotal" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Fecha" Type="DateTime" Precision="0" />
+    <Property Name="CantidadNueva" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Proveedores">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Telefono" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="Direccion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Compras" Relationship="Self.FK__Compras__Id_prov__35BCFE0A" FromRole="Proveedores" ToRole="Compras" />
+  </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Usuario" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Clave" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Nombre" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="Nivel" Type="Int32" />
+  </EntityType>
+  <Association Name="FK__Almacen_I__Id_in__32E0915F">
+    <End Role="Almacenes" Type="Self.Almacenes" Multiplicity="1" />
+    <End Role="Almacen_Inventario" Type="Self.Almacen_Inventario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Almacenes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Almacen_Inventario">
+        <PropertyRef Name="Id_inventario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ComprasDetalle__3A81B327">
+    <End Role="Almacen_Inventario" Type="Self.Almacen_Inventario" Multiplicity="1" />
+    <End Role="ComprasDetalle" Type="Self.ComprasDetalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Almacen_Inventario">
+        <PropertyRef Name="Id_almacen" />
+        <PropertyRef Name="Id_inventario" />
+      </Principal>
+      <Dependent Role="ComprasDetalle">
+        <PropertyRef Name="Id_almacen" />
+        <PropertyRef Name="Id_inventario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DetalleEgreso__4222D4EF">
+    <End Role="Almacen_Inventario" Type="Self.Almacen_Inventario" Multiplicity="1" />
+    <End Role="DetalleEgreso" Type="Self.DetalleEgreso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Almacen_Inventario">
+        <PropertyRef Name="Id_almacen" />
+        <PropertyRef Name="Id_inventario" />
+      </Principal>
+      <Dependent Role="DetalleEgreso">
+        <PropertyRef Name="Id_almacen" />
+        <PropertyRef Name="Id_inventario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Compras__Id_prov__35BCFE0A">
+    <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="0..1" />
+    <End Role="Compras" Type="Self.Compras" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proveedores">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Compras">
+        <PropertyRef Name="Id_proveedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ComprasDe__Id_do__398D8EEE">
+    <End Role="Compras" Type="Self.Compras" Multiplicity="1" />
+    <End Role="ComprasDetalle" Type="Self.ComprasDetalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Compras">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ComprasDetalle">
+        <PropertyRef Name="Id_documento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DetalleEg__Id_ho__403A8C7D">
+    <End Role="HojaEgreso" Type="Self.HojaEgreso" Multiplicity="1" />
+    <End Role="DetalleEgreso" Type="Self.DetalleEgreso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HojaEgreso">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DetalleEgreso">
+        <PropertyRef Name="Id_hojaEgreso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DetalleEg__Id_in__412EB0B6">
+    <End Role="Inventario" Type="Self.Inventario" Multiplicity="1" />
+    <End Role="DetalleEgreso" Type="Self.DetalleEgreso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inventario">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DetalleEgreso">
+        <PropertyRef Name="Id_inventario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Categorias_Inventario">
+    <End Role="Categorias" Type="Self.Categorias" Multiplicity="*" />
+    <End Role="Inventario" Type="Self.Inventario" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="FerreSoriano17Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Almacen_Inventario" EntityType="Self.Almacen_Inventario" />
+    <EntitySet Name="Almacenes" EntityType="Self.Almacenes" />
+    <EntitySet Name="Categorias" EntityType="Self.Categorias" />
+    <EntitySet Name="Compras" EntityType="Self.Compras" />
+    <EntitySet Name="ComprasDetalle" EntityType="Self.ComprasDetalle" />
+    <EntitySet Name="DetalleEgreso" EntityType="Self.DetalleEgreso" />
+    <EntitySet Name="HojaEgreso" EntityType="Self.HojaEgreso" />
+    <EntitySet Name="Inventario" EntityType="Self.Inventario" />
+    <EntitySet Name="Kardex" EntityType="Self.Kardex" />
+    <EntitySet Name="Proveedores" EntityType="Self.Proveedores" />
+    <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+    <AssociationSet Name="FK__Almacen_I__Id_in__32E0915F" Association="Self.FK__Almacen_I__Id_in__32E0915F">
+      <End Role="Almacenes" EntitySet="Almacenes" />
+      <End Role="Almacen_Inventario" EntitySet="Almacen_Inventario" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ComprasDetalle__3A81B327" Association="Self.FK__ComprasDetalle__3A81B327">
+      <End Role="Almacen_Inventario" EntitySet="Almacen_Inventario" />
+      <End Role="ComprasDetalle" EntitySet="ComprasDetalle" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DetalleEgreso__4222D4EF" Association="Self.FK__DetalleEgreso__4222D4EF">
+      <End Role="Almacen_Inventario" EntitySet="Almacen_Inventario" />
+      <End Role="DetalleEgreso" EntitySet="DetalleEgreso" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Compras__Id_prov__35BCFE0A" Association="Self.FK__Compras__Id_prov__35BCFE0A">
+      <End Role="Proveedores" EntitySet="Proveedores" />
+      <End Role="Compras" EntitySet="Compras" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ComprasDe__Id_do__398D8EEE" Association="Self.FK__ComprasDe__Id_do__398D8EEE">
+      <End Role="Compras" EntitySet="Compras" />
+      <End Role="ComprasDetalle" EntitySet="ComprasDetalle" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DetalleEg__Id_ho__403A8C7D" Association="Self.FK__DetalleEg__Id_ho__403A8C7D">
+      <End Role="HojaEgreso" EntitySet="HojaEgreso" />
+      <End Role="DetalleEgreso" EntitySet="DetalleEgreso" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DetalleEg__Id_in__412EB0B6" Association="Self.FK__DetalleEg__Id_in__412EB0B6">
+      <End Role="Inventario" EntitySet="Inventario" />
+      <End Role="DetalleEgreso" EntitySet="DetalleEgreso" />
+    </AssociationSet>
+    <AssociationSet Name="Categorias_Inventario" Association="Self.Categorias_Inventario">
+      <End Role="Categorias" EntitySet="Categorias" />
+      <End Role="Inventario" EntitySet="Inventario" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

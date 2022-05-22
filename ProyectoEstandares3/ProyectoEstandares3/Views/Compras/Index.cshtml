@@ -1,0 +1,61 @@
+﻿@model IEnumerable<ProyectoEstandares3.Models.Compras>
+
+@{
+    ViewBag.Title = "Lista de Compras";
+}
+
+<h2>Lista de Compras</h2>
+<br />
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        <font color="green">@ViewBag.confirmacion</font>
+    </div>
+</div>
+<br />
+<p>
+    @Html.ActionLink("Registrar nueva compra", "Guardar")
+</p>
+<table class="table" style="background-color:white">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Documento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sumas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Iva)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Proveedor)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Documento)
+        </td>
+        <td>
+            @(String.Format("{0:yyyy/MM/dd}", item.Fecha))
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sumas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Iva)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Proveedor)
+        </td>
+        <td>
+            @Html.ActionLink("Detalles", "TodaLaCompra", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

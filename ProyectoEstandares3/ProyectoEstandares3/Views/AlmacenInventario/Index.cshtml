@@ -1,0 +1,48 @@
+﻿@model IEnumerable<ProyectoEstandares3.Models.Almacen_Inventario>
+
+@{
+    ViewBag.Title = "Lista de productos en sus almacenes";
+}
+
+<h2>Lista de productos en sus almacenes</h2>
+
+<p>
+    @Html.ActionLink("Crear nuevo", "Guardar")
+</p>
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        <font color="green">@ViewBag.mensaje</font>
+    </div>
+</div>
+<table class="table" style="background-color:white">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Almacen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Inventario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Existencia)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Almacen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Inventario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Existencia)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Modificar", new { id = item.Id_almacen })
+        </td>
+    </tr>
+}
+
+</table>

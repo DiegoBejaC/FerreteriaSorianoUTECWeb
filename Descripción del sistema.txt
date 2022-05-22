@@ -1,0 +1,9 @@
+DESCRIPCIÓN DEL SISTEMA ----------
+
+Este sistema consiste en una aplicación Web, dirigida a una ferretería ficticia en donde se necesita una mejor gestión de sus inventarios. La aplicación mantiene un control de los movimientos de entrada y salida de los diferentes productos con los que cuentan en sus almacenes. Contiene información sobre los productos, almacenes, proveedores, compras y ventas, así como también de los usuarios que tienen acceso al sistema en el nivel de Administrador, proveedor o encargado de inventario. 
+
+Este sistema ha sido creado como parte de un trabajo grupal para la asignatura conocida como "Estándares de programación" en la carrera de Ingeniería en Sistemas de la Universidad Tecnológica de El Salvador (UTEC). Por este motivo y por el hecho de tratarse de una app dirigida a una empresa ficticia, la aplicación no se ha lanzado a producción.
+
+Es importante mencionar que el trabajo grupal era llevado a cabo por un grupo de la asignatura en el cual yo no estuve incluido, puesto que para entonces yo personalmente ya había cursado la asignatura antes que las personas del grupo, sin embargo, ellos han solicitado mi ayuda para realizar el sistema web, siendo yo el que lo ha programado tal y como está en el repositorio hasta la fecha, por ello lo he publicado aquí.
+
+Este sistema se ha programado en el IDE Visual Studio, en lenguaje C# junto con EntityFramework, modelo MVC. Conectando a una base de datos en SQL Server alojada en un servidor local. Incluye la librería "Rotativa" para permitir la generación de un reporte en formato PDF a partir de la vista de una página web con la información del reporte en cuestión.

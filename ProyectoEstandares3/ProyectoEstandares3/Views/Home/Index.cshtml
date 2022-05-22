@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "Página de inicio";
+}
+
+<center>
+    <div class="jumbotron" style="background-color:white">
+        <img src="~/Imagenes/SorianoLogo1.png" />
+        <p class="lead">Las mejores herramientas en un sólo lugar</p>
+    </div>
+</center>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Movimientos de productos</h2>
+        <p>
+            Cada día movilizamos nuestro inventario de manera ágil
+            y exitosa. Y cada movimiento está registrado. Descúbrelo.
+        </p>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <p>@Html.ActionLink("Egresos", "Index", "Egresos")</p>
+        }
+        else
+        {
+            <p>@Html.ActionLink("Egresos", "Indicacion", "Profile")</p>
+        }
+    </div>
+    <div class="col-md-4">
+        <h2>Compras realizadas</h2>
+        <p>Conseguimos los mejores productos por parte de proveedores seleccionados.</p>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <p>@Html.ActionLink("Compras", "Index", "Compras")</p>
+        }
+        else
+        {
+            <p>@Html.ActionLink("Compras", "Indicacion", "Profile")</p>
+        }
+    </div>
+    <div class="col-md-4">
+        <h2>Proveedores</h2>
+        <p>
+            Revisa los datos de los proveedores registrados
+            en nuestro sistema.
+        </p>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <p>@Html.ActionLink("Proveedores", "Index", "Proveedores")</p>
+        }
+        else
+        {
+            <p>@Html.ActionLink("Proveedores", "Indicacion", "Profile")</p>
+        }
+    </div>
+</div>
+

@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FerreSoriano17ModelStoreContainer" CdmEntityContainer="FerreSoriano17Entities">
+    <EntitySetMapping Name="Almacen_Inventario">
+      <EntityTypeMapping TypeName="FerreSoriano17Model.Almacen_Inventario">
+        <MappingFragment StoreEntitySet="Almacen_Inventario">
+          <ScalarProperty Name="Id_almacen" ColumnName="Id_almacen" />
+          <ScalarProperty Name="Id_inventario" ColumnName="Id_inventario" />
+          <ScalarProperty Name="Existencia" ColumnName="Existencia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Almacenes">
+      <EntityTypeMapping TypeName="FerreSoriano17Model.Almacenes">
+        <MappingFragment StoreEntitySet="Almacenes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categorias">
+      <EntityTypeMapping TypeName="FerreSoriano17Model.Categorias">
+        <MappingFragment StoreEntitySet="Categorias">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Compras">
+      <EntityTypeMapping TypeName="FerreSoriano17Model.Compras">
+        <MappingFragment StoreEntitySet="Compras">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Documento" ColumnName="Documento" />
+          <ScalarProperty Name="Id_proveedor" ColumnName="Id_proveedor" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Sumas" ColumnName="Sumas" />
+          <ScalarProperty Name="Iva" ColumnName="Iva" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ComprasDetalle">
+      <EntityTypeMapping TypeName="FerreSoriano17Model.ComprasDetalle">
+        <MappingFragment StoreEntitySet="ComprasDetalle">
+          <ScalarProperty Name="PrecioTotal" ColumnName="PrecioTotal" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Id_documento" ColumnName="Id_documento" />
+          <ScalarProperty Name="Id_almacen" ColumnName="Id_almacen" />
+          <ScalarProperty Name="Id_inventario" ColumnName="Id_inventario" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetalleEgreso">
+      <EntityTypeMapping TypeName="FerreSoriano17Model.DetalleEgreso">
+        <MappingFragment StoreEntitySet="DetalleEgreso">
+          <ScalarProperty Name="PrecioTotal" ColumnName="PrecioTotal" />
+          <ScalarProperty Name="Id_detalle" ColumnName="Id_detalle" />
+          <ScalarProperty Name="Id_hojaEgreso" ColumnName="Id_hojaEgreso" />
+          <ScalarProperty Name="Id_inventario" ColumnName="Id_inventario" />
+          <ScalarProperty Name="Id_almacen" ColumnName="Id_almacen" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HojaEgreso">
+      <EntityTypeMapping TypeName="FerreSoriano17Model.HojaEgreso">
+        <MappingFragment StoreEntitySet="HojaEgreso">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Suma" ColumnName="Suma" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Inventario">
+      <EntityTypeMapping TypeName="FerreSoriano17Model.Inventario">
+        <MappingFragment StoreEntitySet="Inventario">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="StockMinimo" ColumnName="StockMinimo" />
+          <ScalarProperty Name="StockMaximo" ColumnName="StockMaximo" />
+          <ScalarProperty Name="Existencia" ColumnName="Existencia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kardex">
+      <EntityTypeMapping TypeName="FerreSoriano17Model.Kardex">
+        <MappingFragment StoreEntitySet="Kardex">
+          <ScalarProperty Name="CantidadNueva" ColumnName="CantidadNueva" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="PrecioTotal" ColumnName="PrecioTotal" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="Id_kardex" ColumnName="Id_kardex" />
+          <ScalarProperty Name="Id_hojaEgreso" ColumnName="Id_hojaEgreso" />
+          <ScalarProperty Name="Id_inventario" ColumnName="Id_inventario" />
+          <ScalarProperty Name="Id_compra" ColumnName="Id_compra" />
+          <ScalarProperty Name="Id_almacen" ColumnName="Id_almacen" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Proveedores">
+      <EntityTypeMapping TypeName="FerreSoriano17Model.Proveedores">
+        <MappingFragment StoreEntitySet="Proveedores">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="FerreSoriano17Model.Usuarios">
+        <MappingFragment StoreEntitySet="Usuarios">
+          <ScalarProperty Name="Nivel" ColumnName="Nivel" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="Clave" ColumnName="Clave" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Categorias_Inventario" TypeName="FerreSoriano17Model.Categorias_Inventario" StoreEntitySet="Categorias_Inventario">
+      <EndProperty Name="Categorias">
+        <ScalarProperty Name="Id" ColumnName="Id_categoria" />
+      </EndProperty>
+      <EndProperty Name="Inventario">
+        <ScalarProperty Name="Id" ColumnName="Id_inventario" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

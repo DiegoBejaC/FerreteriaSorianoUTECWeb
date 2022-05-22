@@ -1,0 +1,40 @@
+﻿@model ProyectoEstandares3.Models.Almacen_Inventario
+
+@{
+    ViewBag.Title = "Detalle del almacen y el inventario";
+}
+
+<h2>Detalle del almacen y el inventario</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Id_almacen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Id_almacen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Id_inventario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Id_inventario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Existencia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Existencia)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Modificar", new { id = Model.Id_almacen }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

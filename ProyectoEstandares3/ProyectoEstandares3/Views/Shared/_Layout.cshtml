@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Ferretería Soriano</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body style="background-color:mistyrose">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("INICIO", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Productos", "Index", "Inventario")</li>
+                        <li>@Html.ActionLink("Proveedores", "Index", "Proveedores")</li>
+                        <li>@Html.ActionLink("Almacenes", "Index", "Almacenes")</li>
+                        <li>@Html.ActionLink("Compras", "Index", "Compras")</li>
+                        <li>@Html.ActionLink("Salida de productos", "Index", "HojaEgreso")</li>
+                        <li>@Html.ActionLink("Usuarios", "Index", "Usuarios")</li>
+                        <li><a href="/Profile/Logout">Cerrar Sesión</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="/Profile/Index">Iniciar Sesión</a></li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Ferretería Soriano - Todos los derechos reservados.</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

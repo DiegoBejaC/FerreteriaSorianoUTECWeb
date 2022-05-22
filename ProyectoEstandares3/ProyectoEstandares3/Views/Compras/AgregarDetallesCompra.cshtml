@@ -1,0 +1,88 @@
+﻿@model ProyectoEstandares3.Models.ComprasDetalle
+
+@{
+    ViewBag.Title = "Agregar registro de detalle de la compra";
+}
+
+<h2>Agregar registro de detalle de la compra</h2>
+
+
+@using (Html.BeginForm("NuevoDetalleCompra", "Compras", new { ReturnUrl = ViewBag.ReturnUrl , total = ViewBag.CompraPrecioTotal }, FormMethod.Post, new { @class = "form-horizontal", role = "form" })) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    @{
+        if (!string.IsNullOrEmpty(ViewBag.alerta))
+        {
+            // Message tiene un valor
+            <div class="alert alert-danger">@ViewBag.alerta</div>
+        }
+    }
+    <dl class="dl-horizontal">
+        <dt>
+            Total de la compra:
+        </dt>
+
+        <dd>
+            @ViewBag.CompraPrecioTotal
+        </dd>
+    </dl>
+
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.Id_documento, "Id_documento", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Id_documento, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            @Html.ValidationMessageFor(model => model.Id_documento, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Id_inventario, "Id_inventario", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Id_inventario, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Id_inventario, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Id_almacen, "Id_almacen", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Id_almacen, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Id_almacen, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Cantidad, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Cantidad, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Cantidad, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Precio, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Precio, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Precio, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Guardar en compra" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Regresar a compra", "DetalleCompra", new { id = Model.Id_documento, total = ViewBag.CompraPrecioTotal });
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
